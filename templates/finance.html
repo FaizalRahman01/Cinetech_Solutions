@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Finance Management{% endblock %}
+
+{% block content %}
+    <section class="card">
+        <h2><i class="fas fa-wallet"></i> CineTech Finance Portal</h2>
+        
+        {% if not pin_verified %}
+            <form method="POST" class="form">
+                <div class="form-group">
+                    <label for="pin">Enter your ATM PIN:</label>
+                    <input type="password" id="pin" name="pin" required>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Main</a>
+                </div>
+            </form>
+        {% else %}
+            <div class="balance-display">
+                <p>Current Balance:</p>
+                <h3>${{ "%.2f"|format(balance) }}</h3>
+            </div>
+            
+            <div class="finance-actions">
+                <form method="POST" class="form-inline">
+                    <div class="form-group">
+                        <label for="amount">Amount:</label>
+                        <input type="number" step="0.01" id="amount" name="amount" required>
+                    </div>
+                    <button type="submit" name="deposit" class="btn btn-success">Deposit</button>
+                    <button type="submit" name="withdraw" class="btn btn-danger">Withdraw</button>
+                </form>
+            </div>
+            
+            <div class="form-actions">
+                <a href="{{ url_for('finance_logout') }}" class="btn btn-secondary">Logout</a>
+                <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Main</a>
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}

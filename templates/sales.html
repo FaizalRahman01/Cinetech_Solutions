@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Sales Analytics{% endblock %}
+
+{% block content %}
+    <section class="card">
+        <h2><i class="fas fa-chart-line"></i> Sales Data Analysis</h2>
+        
+        <div class="sales-data">
+            <div class="data-item">
+                <h3>Original Sales Data:</h3>
+                <p>{{ sales_data }}</p>
+            </div>
+            
+            <div class="data-item">
+                <h3>Tax-inclusive Prices (10% tax):</h3>
+                <p>{{ tax_prices }}</p>
+            </div>
+            
+            <div class="data-item">
+                <h3>High-value Transactions (>500):</h3>
+                <p>{{ high_value }}</p>
+            </div>
+            
+            <div class="data-item highlight">
+                <h3>Total Revenue after tax:</h3>
+                <p>${{ "%.2f"|format(total_revenue) }}</p>
+            </div>
+        </div>
+        
+        <div class="form-actions">
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Main</a>
+        </div>
+    </section>
+{% endblock %}

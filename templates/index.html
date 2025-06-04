@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <h2>Welcome to CineTech Solutions</h2>
+        <p>Your one-stop solution for multiplex management and entertainment services</p>
+    </section>
+    
+    <div class="services-grid">
+        <!-- Ticket Pricing Card -->
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-ticket-alt"></i></div>
+            <h3>Ticket Pricing</h3>
+            <p>Calculate ticket prices based on customer age groups</p>
+            <a href="{{ url_for('ticket') }}" class="btn">
+                <i class="fas fa-arrow-right"></i> Get Started
+            </a>
+        </div>
+        
+        <!-- Finance Management Card -->
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-wallet"></i></div>
+            <h3>Finance Management</h3>
+            <p>Manage deposits, withdrawals, and check balances</p>
+            <a href="{{ url_for('finance') }}" class="btn">
+                <i class="fas fa-arrow-right"></i> Access Portal
+            </a>
+        </div>
+        
+        <!-- Student Discounts Card -->
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-user-graduate"></i></div>
+            <h3>Student Discounts</h3>
+            <p>Register students and manage discount programs</p>
+            <a href="{{ url_for('student') }}" class="btn">
+                <i class="fas fa-arrow-right"></i> View Offers
+            </a>
+        </div>
+        
+        <!-- Employee Data Card -->
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-user-tie"></i></div>
+            <h3>Employee Data</h3>
+            <p>View employee information and salary details</p>
+            <a href="{{ url_for('employee') }}" class="btn">
+                <i class="fas fa-arrow-right"></i> View Staff
+            </a>
+        </div>
+        
+        <!-- Sales Analytics Card -->
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Sales Analytics</h3>
+            <p>Analyze sales data and revenue statistics</p>
+            <a href="{{ url_for('sales') }}" class="btn">
+                <i class="fas fa-arrow-right"></i> View Reports
+            </a>
+        </div>
+        
+        <!-- Quick Actions Card -->
+        <div class="service-card highlight">
+            <div class="service-icon"><i class="fas fa-bolt"></i></div>
+            <h3>Quick Actions</h3>
+            <p>Access frequently used features quickly</p>
+            <div class="quick-actions">
+                <a href="{{ url_for('ticket') }}?age=15" class="btn-sm">
+                    <i class="fas fa-child"></i> Teen Ticket
+                </a>
+                <a href="{{ url_for('finance') }}" class="btn-sm">
+                    <i class="fas fa-balance-scale"></i> Check Balance
+                </a>
+                <a href="{{ url_for('employee') }}" class="btn-sm">
+                    <i class="fas fa-users"></i> View Employees
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <section class="features">
+        <h2>Why Choose CineTech Solutions?</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fas fa-rocket"></i>
+                <h3>Fast Processing</h3>
+                <p>Experience lightning-fast management of all theater operations — from ticket bookings to seat allocations and show scheduling.
+                     Our streamlined backend ensures minimal delays and maximum productivity, helping you serve more customers with ease.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-shield-alt"></i>
+                <h3> Robust Security Protocols</h3>
+                <p>Your data and transactions are safe with us. CineTech Solutions integrates advanced security features 
+                    including PIN verification for all financial operations, ensuring every transaction is secure, traceable, and tamper-proof.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-chart-pie"></i>
+                <h3>Actionable Business Analytics</h3>
+                <p>Make smarter decisions with in-depth insights. Our powerful analytics engine provides real-time data on ticket sales, peak hours, user preferences, 
+                    and more — empowering theater owners and managers with the knowledge they need to grow their business.</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

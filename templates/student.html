@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Student Discounts{% endblock %}
+
+{% block content %}
+    <div class="tabs">
+        <div class="tab-header">
+            <button class="tab-btn active" data-tab="add">Add Student</button>
+            <button class="tab-btn" data-tab="view">View Students</button>
+        </div>
+        
+        <div class="tab-content active" id="add">
+            <section class="card">
+                <h2><i class="fas fa-user-plus"></i> Add Student</h2>
+                
+                <form method="POST" class="form">
+                    <input type="hidden" name="add_student" value="1">
+                    
+                    <div class="form-group">
+                        <label for="name">Student Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="id">Student ID:</label>
+                        <input type="number" id="id" name="id" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="grades">Grades (comma separated):</label>
+                        <input type="text" id="grades" name="grades" placeholder="e.g. 85, 90, 78" required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Add Student</button>
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Main</a>
+                    </div>
+                </form>
+            </section>
+        </div>
+        
+        <div class="tab-content" id="view">
+            <section class="card">
+                <h2><i class="fas fa-search"></i> Search Students</h2>
+                
+                <form method="POST" class="form">
+                    <input type="hidden" name="search_id" value="1">
+                    
+                    <div class="form-group">
+                        <label for="search_id">Search by Student ID:</label>
+                        <div class="input-group">
+                            <input type="number" id="search_id" name="search_id" required>
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </form>
+                
+                {% if search_result %}
+                    <div class="search-result">
+                        <h3>Student Found:</h3>
+                        <p><strong>Name:</strong> {{ search_result.name }}</p>
+                        <p><strong>ID:</strong> {{ search_result.id }}</p>
+                        <p><strong>Grades:</strong> {{ search_result.grades }}</p>
+                        <p><strong>Average:</strong> {{ "%.2f"|format(search_result.average) }}%</p>
+                    </div>
+                {% endif %}
+                
+                <hr>
+                
+                <form method="POST" class="form">
+                    <input type="hidden" name="threshold" value="1">
+                    
+                    <div class="form-group">
+                        <label for="threshold">View students with average above:</label>
+                        <div class="input-group">
+                            <input type="number" id="threshold" name="threshold" min="0" max="100" required>
+                            <button type="submit" class="btn btn-primary">Show Students</button>
+                        </div>
+                    </div>
+                </form>
+                
+                {% if threshold_result %}
+                    <div class="threshold-result">
+                        <h3>Students with average above {{ threshold_result.threshold }}:</h3>
+                        
+                        {% if threshold_result.students %}
+                            <ul>
+                                {% for student in threshold_result.students %}
+                                    <li>
+                                        {{ student.name }} (ID: {{ student.id }}) - Average: {{ "%.2f"|format(student.average) }}%
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>No students found above this threshold</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                
+                <div class="form-actions">
+                    <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Main</a>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

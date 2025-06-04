@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineTech Solutions - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CineTech Solutions</h1>
+            <p>Your Ultimate Multiplex & Entertainment Hub</p>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="{{ url_for('ticket') }}"><i class="fas fa-ticket-alt"></i> Movie Tickets</a></li>
+                <li><a href="{{ url_for('finance') }}"><i class="fas fa-wallet"></i> Banking</a></li>
+                <li><a href="{{ url_for('student') }}"><i class="fas fa-user-graduate"></i> Student Hub</a></li>
+                <li><a href="{{ url_for('employee') }}"><i class="fas fa-user-tie"></i> Staff Portal</a></li>
+                <li><a href="{{ url_for('sales') }}"><i class="fas fa-chart-line"></i> Sales Reports</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="flash {{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            
+            {% block content %}{% endblock %}
+        </main>
+        
+        <footer>
+            <p>&copy; 2023 CineTech Solutions. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
