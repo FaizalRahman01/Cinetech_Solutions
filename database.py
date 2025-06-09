@@ -56,7 +56,9 @@ def initialize_database():
                     ("Prem Kumar Yadav", "Harmu Colony, Ranchi, Jharkhand, India", 50000, 30, "Designer"),
                     ("Sameer Ahmad", "Park Street, Kolkata, West Bengal, India", 46000, 27, "Marketing Specialist"),
                     ("Rahul Kumar", "Gomti Nagar, Lucknow, Uttar Pradesh, India", 42000, 26, "Sales Associate"),
+                    ("Anjali Kumari", " main Rd, Chandigarh, India", 39000, 25, "Customer Support")
                     ("Sumit Kumar", "Sector 22, Chandigarh, India", 39000, 25, "Customer Support")
+                    ( "Charvi Gupta", " Lochan path , Hazaribag, India", 39000, 25, "Developer")
                 ]
                 
                 cursor.executemany('''
