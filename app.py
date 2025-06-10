@@ -3,7 +3,7 @@ import sqlite3
 from database import create_connection
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'
+app.secret_key = 'R22CA1CA0067-Faizal_Rahman'
 
 # Helper function to get database connection
 def get_db_connection():
